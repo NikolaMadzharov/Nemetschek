@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Nemetschek.Core.Contracts;
+using Nemetschek.Core.Services;
 using Nemetschek.Data;
 
 namespace Nemetschek
@@ -19,6 +21,8 @@ namespace Nemetschek
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<IFilmService, FilmService>();
 
             var app = builder.Build();
 

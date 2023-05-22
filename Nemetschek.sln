@@ -5,6 +5,10 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nemetschek", "Nemetschek\Nemetschek.csproj", "{54939A07-0B0E-4A70-A023-AE78B39E9988}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nemetschek.Core", "Nemetschek.Core\Nemetschek.Core.csproj", "{142DFA57-6993-4B2C-9199-8D1E4A29A9E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nemetschek.Infrastructure", "Nemetschek.Infrastructure\Nemetschek.Infrastructure.csproj", "{840DD332-C318-46CF-BED4-6AD9C5A568B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{54939A07-0B0E-4A70-A023-AE78B39E9988}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54939A07-0B0E-4A70-A023-AE78B39E9988}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54939A07-0B0E-4A70-A023-AE78B39E9988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{142DFA57-6993-4B2C-9199-8D1E4A29A9E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{142DFA57-6993-4B2C-9199-8D1E4A29A9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{142DFA57-6993-4B2C-9199-8D1E4A29A9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{142DFA57-6993-4B2C-9199-8D1E4A29A9E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{840DD332-C318-46CF-BED4-6AD9C5A568B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{840DD332-C318-46CF-BED4-6AD9C5A568B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{840DD332-C318-46CF-BED4-6AD9C5A568B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{840DD332-C318-46CF-BED4-6AD9C5A568B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
