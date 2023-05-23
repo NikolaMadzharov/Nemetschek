@@ -1,0 +1,35 @@
+﻿@model Nemetschek.Models.Film.AddFilmViewModel
+
+<div class="form-group">
+    <label asp-for="Actors"></label>
+    @for (int i = 0; i < Model.Actors.Count; i++)
+    {
+        <div class="actor">
+            <input type="text" asp-for="Actors[i].FirstName" placeholder="First Name" class="form-control" />
+            <input type="text" asp-for="Actors[i].LastName" placeholder="Last Name" class="form-control" />
+            <input type="number" asp-for="Actors[i].Age" placeholder="Age" class="form-control" />
+        </div>
+    }
+    <button type="button" id="addActorBtn" class="btn btn-secondary">Add Actor</button>
+    <span asp-validation-for="Actors" class="text-danger"></span>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var actorCount = @Model.Actors.Count;
+
+            $('#addActorBtn').click(function () {
+                var newActor = `
+                            <div class="actor">
+                                <input type="text" name="Actors[${actorCount}].FirstName" placeholder="First Name" class="form-control" />
+                                <input type="text" name="Actors[${actorCount}].LastName" placeholder="Last Name" class="form-control" />
+                                <input type="number" name="Actors[${actorCount}].Age" placeholder="Age" class="form-control" />
+                            </div>`;
+
+                $('.actor').last().after(newActor);
+                actorCount++;
+            });
+        });
+    </script>
+}

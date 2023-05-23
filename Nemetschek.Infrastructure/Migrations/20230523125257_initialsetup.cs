@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Nemetschek.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class CreatedActor_Film_Genre_Entities : Migration
+    public partial class initialsetup : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,7 +51,7 @@ namespace Nemetschek.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Genre",
+                name: "Genres",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -60,7 +60,7 @@ namespace Nemetschek.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Genre", x => x.Id);
+                    table.PrimaryKey("PK_Genres", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -176,6 +176,7 @@ namespace Nemetschek.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GenreId = table.Column<int>(type: "int", nullable: true),
                     Premiere = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -183,9 +184,9 @@ namespace Nemetschek.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Films", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Films_Genre_GenreId",
+                        name: "FK_Films_Genres_GenreId",
                         column: x => x.GenreId,
-                        principalTable: "Genre",
+                        principalTable: "Genres",
                         principalColumn: "Id");
                 });
 
@@ -292,7 +293,7 @@ namespace Nemetschek.Infrastructure.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Genre");
+                name: "Genres");
         }
     }
 }

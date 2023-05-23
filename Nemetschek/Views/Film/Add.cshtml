@@ -1,0 +1,78 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Nemetschek.Models.Film.AddFilmViewModel
+
+@{
+    ViewData["Title"] = "Add Film";
+}
+
+<h1>Add Film</h1>
+
+<form asp-controller="Film" asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Premiere"></label>
+        <input asp-for="Premiere" class="form-control" type="date" />
+        <span asp-validation-for="Premiere" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImageUrl"></label>
+        <input asp-for="ImageUrl" class="form-control" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GenreId"></label>
+        <select asp-for="GenreId" class="form-control">
+            @foreach (var genre in Model.Genres)
+            {
+                <option value="@genre.Id">@genre.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group" id="actorsContainer">
+        <label asp-for="Actors"></label>
+        @for (int i = 0; i < Model.Actors.Count; i++)
+        {
+            <div class="actor">
+                <input type="text" asp-for="Actors[i].FirstName" placeholder="First Name" class="form-control" />
+                <input type="text" asp-for="Actors[i].LastName" placeholder="Last Name" class="form-control" />
+                <input type="number" asp-for="Actors[i].Age" placeholder="Age" class="form-control" />
+            </div>
+        }
+        <button type="button" id="addActorBtn" class="btn btn-secondary">Add Actor</button>
+        <span asp-validation-for="Actors" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+
+@{
+    await Html.RenderPartialAsync("_AddActor");
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var actorCount = @Model.Actors.Count;
+
+            $('#addActorBtn').click(function () {
+                var newActor = `
+                            <div class="actor">
+                                <input type="text" name="Actors[${actorCount}].FirstName" placeholder="First Name" class="form-control" />
+                                <input type="text" name="Actors[${actorCount}].LastName" placeholder="Last Name" class="form-control" />
+                                <input type="number" name="Actors[${actorCount}].Age" placeholder="Age" class="form-control" />
+                            </div>`;
+
+                $('#actorsContainer').append(newActor);
+                actorCount++;
+            });
+        });
+    </script>
+}

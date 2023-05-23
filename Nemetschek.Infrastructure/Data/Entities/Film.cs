@@ -19,14 +19,14 @@ public class Film
     public string? ImageUrl { get; set; }
 
 
-    [ForeignKey("Genre")]
+    [ForeignKey("Genres")]
     public int? GenreId { get; set; }
 
     public Genre? Genre { get; set; }
 
     public DateTime? Premiere { get; set; }
 
-    public IEnumerable<Actor> Actors { get; set; }
+    public ICollection<Actor> Actors { get; set; }
 
 
 

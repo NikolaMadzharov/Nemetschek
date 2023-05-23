@@ -17,7 +17,7 @@ namespace Nemetschek.Data
 
         public DbSet<Film> Films { get; set; }
 
-        public DbSet<Genre> Genre { get; set; }
+        public DbSet<Genre> Genres { get; set; }
 
 
     }

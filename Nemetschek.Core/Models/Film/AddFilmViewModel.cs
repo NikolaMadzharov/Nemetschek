@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.Identity.Client;
+using Nemetschek.Core.Models.Actor;
 using Nemetschek.Core.Models.Genre;
 
 namespace Nemetschek.Models.Film;
@@ -22,6 +23,11 @@ public class AddFilmViewModel
     [Display(Name = "Genres")]
     public int GenreId { get; set; }
 
-    public IEnumerable<GenreViewModel> Genres { get; set; }
+    public IEnumerable<GenreViewModel> Genres { get; set; } = new List<GenreViewModel>();
+
+    [Required]
+    [Display(Name = "Actors")]
+    public List<AddActorViewModel> Actors { get; set; } = new List<AddActorViewModel>();
+
 
 }

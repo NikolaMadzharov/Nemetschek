@@ -292,7 +292,7 @@ namespace Nemetschek.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genre");
+                    b.ToTable("Genres");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -12,8 +12,8 @@ using Nemetschek.Data;
 namespace Nemetschek.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230522204729_CreatedActor_Film_Genre_Entities")]
-    partial class CreatedActor_Film_Genre_Entities
+    [Migration("20230523125257_initialsetup")]
+    partial class initialsetup
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -238,6 +238,9 @@ namespace Nemetschek.Infrastructure.Migrations
                     b.Property<int?>("GenreId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("Premiere")
                         .HasColumnType("datetime2");
 
@@ -292,7 +295,7 @@ namespace Nemetschek.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genre");
+                    b.ToTable("Genres");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

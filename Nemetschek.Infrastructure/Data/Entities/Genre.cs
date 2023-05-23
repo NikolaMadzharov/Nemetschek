@@ -20,6 +20,6 @@ namespace Nemetschek.Infrastructure.Data.Entities
 
         public string Name { get; set; }
 
-        public IEnumerable<Film> Films { get; set; }
+        public ICollection<Film> Films { get; set; }
     }
 }

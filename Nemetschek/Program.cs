@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Nemetschek.Core.Contracts;
 using Nemetschek.Core.Services;
 using Nemetschek.Data;
+using Nemetschek.Extensions;
 
 namespace Nemetschek
 {
@@ -37,7 +38,7 @@ namespace Nemetschek
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.PrepareDataBase();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
