@@ -1,0 +1,101 @@
+﻿@model Nemetschek.Models.Film.PagedFilmViewModel
+
+@{
+    ViewData["Title"] = "All Films";
+}
+
+<h1>All Films</h1>
+
+<div class="mb-3">
+    <label for="genreFilter" class="form-label">Filter by Genre:</label>
+    <select id="genreFilter" class="form-select" onchange="applyGenreFilter(this.value)">
+        <option value="">All Genres</option>
+        @foreach (var genre in ViewData["Genres"] as IEnumerable<Nemetschek.Core.Models.Genre.GenreViewModel>)
+        {
+            <option value="@genre.Id">@genre.Name</option>
+        }
+    </select>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <a asp-action="All" asp-route-sortOrder="@ViewData["TitleSortParam"]">Title</a>
+                </th>
+                <th>
+                    <a asp-action="All" asp-route-sortOrder="@ViewData["GenreSortParam"]">Genre</a>
+                </th>
+                <th>Premiere</th>
+                <th>Actors</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var film in Model.Films)
+            {
+                <tr>
+                    <td>@film.Title</td>
+                    <td>@film.Genre.Name</td>
+                    <td>@film.Premiere</td>
+                    <td>
+                        @foreach (var actor in film.Actors)
+                        {
+                            <span>@actor.FirstName</span>
+                        }
+                    </td>
+                    <td><img src="@film.ImageUrl" alt="@film.Title" class="film-image" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-center">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            @if (Model.PageIndex > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("All", new { page = Model.PageIndex - 1, sortOrder = ViewData["TitleSortParam"], genreId = ViewData["GenreId"] })" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+            }
+
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("All", new { page = i, sortOrder = ViewData["TitleSortParam"], genreId = ViewData["GenreId"] })">@i</a>
+                </li>
+            }
+
+            @if (Model.PageIndex < Model.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("All", new { page = Model.PageIndex + 1, sortOrder = ViewData["TitleSortParam"], genreId = ViewData["GenreId"] })" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
+
+<style>
+    .film-image {
+        max-width: 100px;
+        height: auto;
+    }
+</style>
+
+<script>
+    function applyGenreFilter(genreId) {
+        var currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set("genreId", genreId);
+        window.location.href = currentUrl.toString();
+    }
+</script>

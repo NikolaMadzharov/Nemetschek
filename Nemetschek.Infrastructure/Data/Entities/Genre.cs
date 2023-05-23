@@ -17,7 +17,7 @@ namespace Nemetschek.Infrastructure.Data.Entities
 
         [Key]
         public int Id { get; set; }
-
+        [Required]
         public string Name { get; set; }
 
         public ICollection<Film> Films { get; set; }

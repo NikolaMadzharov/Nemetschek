@@ -61,4 +61,21 @@ public class FilmService:IFilmService
 
         return filmGenres;
     }
+
+    public async Task<IEnumerable<FilmViewModel>> GetAllFilmsAsync()
+    {
+        var films = await this._context.Films
+            .Select(x => new FilmViewModel
+            {
+                Id = x.Id,
+                Title = x.Title,
+                ImageUrl = x.ImageUrl,
+                Genre = x.Genre,
+                Premiere = x.Premiere,
+                Actors = x.Actors
+
+            }).ToListAsync();
+
+        return films;
+    }
 }

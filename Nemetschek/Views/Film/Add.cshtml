@@ -9,35 +9,25 @@
 
 <form asp-controller="Film" asp-action="Add" method="post">
     <div class="form-group">
-        <label asp-for="Title"></label>
+        <label asp-for="Title">Title:</label>
         <input asp-for="Title" class="form-control" />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Premiere"></label>
+        <label asp-for="Premiere">Premiere Date:</label>
         <input asp-for="Premiere" class="form-control" type="date" />
         <span asp-validation-for="Premiere" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="ImageUrl"></label>
+        <label asp-for="ImageUrl">Image URL:</label>
         <input asp-for="ImageUrl" class="form-control" />
         <span asp-validation-for="ImageUrl" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="GenreId"></label>
-        <select asp-for="GenreId" class="form-control">
-            @foreach (var genre in Model.Genres)
-            {
-                <option value="@genre.Id">@genre.Name</option>
-            }
-        </select>
-    </div>
-
     <div class="form-group" id="actorsContainer">
-        <label asp-for="Actors"></label>
+        <label asp-for="Actors">Actors:</label>
         @for (int i = 0; i < Model.Actors.Count; i++)
         {
             <div class="actor">
@@ -47,11 +37,22 @@
             </div>
         }
         <button type="button" id="addActorBtn" class="btn btn-secondary">Add Actor</button>
-        <span asp-validation-for="Actors" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-primary">Add</button>
+    <div class="form-group">
+        <label asp-for="GenreId">Genre:</label>
+        <select asp-for="GenreId" class="form-control">
+            @foreach (var genre in Model.Genres)
+            {
+                <option value="@genre.Id">@genre.Name</option>
+            }
+        </select>
+    </div>
+
+   <button type="submit" class="btn btn-primary">Add</button>
 </form>
+
+
 
 @{
     await Html.RenderPartialAsync("_AddActor");

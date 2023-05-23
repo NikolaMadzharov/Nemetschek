@@ -15,6 +15,8 @@ namespace Nemetschek.Core.Contracts
 
         Task<IEnumerable<GenreViewModel>> GetGenresAsync();
 
+        Task<IEnumerable<FilmViewModel>> GetAllFilmsAsync();
+
 
     }
 }

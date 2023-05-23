@@ -10,13 +10,14 @@ public class AddFilmViewModel
     public int Id { get; set; }
 
     [Required]
+
+    [StringLength(30, ErrorMessage = "The {0} must be at least {2} and at most {1} characters long.", MinimumLength = 3)]
     public string? Title { get; set; }
 
     [Required]
     public DateTime Premiere { get; set; }
 
     [Required]
-    [Display(Name = "ImageUrl")]
     public string? ImageUrl { get; set; }
 
     [Required]
@@ -26,7 +27,6 @@ public class AddFilmViewModel
     public IEnumerable<GenreViewModel> Genres { get; set; } = new List<GenreViewModel>();
 
     [Required]
-    [Display(Name = "Actors")]
     public List<AddActorViewModel> Actors { get; set; } = new List<AddActorViewModel>();
 
 

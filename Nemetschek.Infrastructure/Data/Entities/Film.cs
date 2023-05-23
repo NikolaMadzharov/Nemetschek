@@ -14,8 +14,11 @@ public class Film
 
     [Key]
     public int Id { get; set; }
-
+    [Required]
+    [StringLength(30, MinimumLength = 3)]
     public string? Title { get; set; }
+    [Required]
+    [Url]
     public string? ImageUrl { get; set; }
 
 

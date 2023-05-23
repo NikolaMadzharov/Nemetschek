@@ -30,6 +30,9 @@ namespace Nemetschek.Extensions
                 new Genre{Name = "Comedy"},
                 new Genre{Name = "Drama"},
                 new Genre{Name = "Adventure"},
+                new Genre{Name = "Mystery"},
+                new Genre{Name = "Romance"},
+                new Genre{Name = "Science fiction"},
             });
 
             data.SaveChanges();
