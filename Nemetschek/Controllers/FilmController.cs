@@ -27,7 +27,7 @@ namespace Nemetschek.Controllers
 
             this._filmService.Add(model);
 
-            return Ok();
+           return RedirectToAction("All", "Film");
         }
 
         public async Task<IActionResult> Add() => this.View(new AddFilmViewModel
